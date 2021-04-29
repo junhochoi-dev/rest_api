@@ -7,6 +7,7 @@ from .models import Quiz
 from .serializers import QuizSerializer
 import random
 
+
 # Create your views here.
 
 
@@ -18,6 +19,6 @@ def helloAPI(request):
 @api_view(['GET'])
 def randomQuiz(request, id):
     totalQuizs = Quiz.objects.all()
-    randomQuizs = random.sample(list[totalQuizs], id)
-    serializers = QuizSerializer(randomQuizs, many=True)
-    return Response(serializers.data)
+    randomQuizs = random.sample(list(totalQuizs), id)
+    serializer = QuizSerializer(randomQuizs, many=True)
+    return Response(serializer.data)
